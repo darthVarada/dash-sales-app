@@ -1,7 +1,7 @@
 import dash
 from dash import html, dcc
 from dash.dependencies import Input, Output
-
+import os
 import pandas as pd
 import numpy as np
  
@@ -92,4 +92,5 @@ def render_graphs(cities, main_variable):
     return fig_city, fig_payment,fig_gender, fig_product_income, fig_income_date
 
 if __name__ == "__main__":
-    app.run_server(debug=False)
+    port = int(os.environ.get("PORT", 8050))  # Usando a porta fornecida pelo ambiente
+    app.run_server(debug=False, port=port)
